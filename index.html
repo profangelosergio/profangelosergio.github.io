@@ -97,4 +97,35 @@
     <img src="tws5.jpeg" alt="Galleria fotografica 5">
     <img src="tws6.jpeg" alt="Galleria fotografica 6">
   </div>
-</section></body></html>
+</section>
+
+<audio id="musicaSito" src="clair+de+lune.mp3" loop></audio>
+
+<button id="pulsanteMusica" type="button"
+  title="Clair de Lune - Claude Debussy, esecuzione David O"
+  style="position:fixed;bottom:20px;right:20px;z-index:9999;background:#071d36;color:#f4dfaa;border:1px solid #ae842f;border-radius:30px;padding:12px 18px;cursor:pointer;box-shadow:0 3px 12px #0004;">
+  ♫ Attiva la musica
+</button>
+
+<script>
+const musicaSito = document.getElementById('musicaSito');
+const pulsanteMusica = document.getElementById('pulsanteMusica');
+musicaSito.volume = 0.35;
+
+pulsanteMusica.addEventListener('click', async () => {
+  if (musicaSito.paused) {
+    try {
+      await musicaSito.play();
+      pulsanteMusica.textContent = '♫ Disattiva la musica';
+    } catch (e) {
+      alert('Impossibile avviare la musica.');
+    }
+  } else {
+    musicaSito.pause();
+    pulsanteMusica.textContent = '♫ Attiva la musica';
+  }
+});
+</script>
+
+</body>
+</html>
